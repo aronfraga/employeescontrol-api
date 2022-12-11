@@ -3,7 +3,7 @@ import express from "express";
 import cors from "cors";
 import { router } from "./routes/index"
 
-require('../src/config/mongo.ts');
+require('../src/config/mongo');
 const server = express();
 
 server.use(cors());
