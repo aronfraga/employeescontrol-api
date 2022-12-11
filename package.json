@@ -2,9 +2,11 @@
   "name": "usercontrol-api",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "app.ts",
   "scripts": {
-    "dev": "nodemon ./src/app.ts"
+    "dev": "nodemon ./index.ts",
+    "build": "tsc",
+    "prestart": "npm run build"
   },
   "author": "Aron Fraga",
   "license": "ISC",

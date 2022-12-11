@@ -1,17 +1,20 @@
 import "dotenv/config";
 import express from "express";
 import cors from "cors";
-const { PORT } = process.env;
 import { router } from "./routes/index"
-import db from "./config/mongo";
 
-const app = express();
+require('../src/config/mongo.ts');
+const server = express();
 
-app.use(cors());
-app.use(express.json());
-app.use(router);
+server.use(cors());
+server.use(express.json());
+server.use(router);
+server.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Credentials', 'true');
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+  res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');
+  next();
+});
 
-db().then(() => console.log("Server is ready to use..."))
-app.listen(PORT, () => {
-  console.log(`Server is booting at PORT: ${PORT}, please wait... `);
-})
+module.exports = server;
