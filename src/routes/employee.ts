@@ -1,4 +1,4 @@
-import { Router, Request, Response } from "express";
+import { Router } from "express";
 import { getEmployee, getEmployees, postEmployee, updateEmployee, deleteEmployee } from "../controllers/employee";
 
 const router = Router();

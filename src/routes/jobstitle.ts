@@ -1,11 +1,11 @@
-import { Router, Request, Response } from "express";
-import { postJobsTitle } from "../controllers/jobstitle";
+import { Router } from "express";
+import { getJobsTitle, postJobsTitle, updateJobsTitle, deleteJobsTitle } from "../controllers/jobstitle";
 
 const router = Router();
 
-//router.get("/", getJobsTitle);
+router.get("/", getJobsTitle);
 router.post("/", postJobsTitle);
-//router.put("/", updateJobsTitle);
-//router.delete("/", deleteJobsTitle);
+router.put("/:id", updateJobsTitle);
+router.delete("/:id", deleteJobsTitle);
 
 export { router }

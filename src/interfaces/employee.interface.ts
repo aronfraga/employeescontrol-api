@@ -4,5 +4,5 @@ export interface IEmployee {
   lastname: string,
   phoneNumber: number,
   salary: number,
-  jobsTitle: []
+  jobsTitle?: [],
 }

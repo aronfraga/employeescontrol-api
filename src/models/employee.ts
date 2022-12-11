@@ -1,7 +1,7 @@
 import { Schema, Types, model, Model } from "mongoose";
 import { IEmployee } from "../interfaces/employee.interface";
 
-const employeeSchema = new Schema<IEmployee>(
+const employeeSchema = new Schema<IEmployee> (
   {
     employeeId: {
       type: Number,

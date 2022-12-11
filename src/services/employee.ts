@@ -17,15 +17,15 @@ const inputChecker = (employee: IEmployee): void => {
     throw new Error("The salary can not be empty and must be a string...");
   }
 
-const insertEmployee = async (employee: IEmployee): Promise<object> => {
+const insertEmployee = async (employee: IEmployee): Promise<IEmployee> => {
   inputChecker(employee);
   const checkEmployee: any = await employeeModel.findOne({ employeeId: employee.employeeId }); 
   if(!!checkEmployee) throw new Error("The employee is already in our system...");
   
   const checkJobsTitle: any = await jobstitleModel.findOne({ jobsTitle: employee.jobsTitle });
-  if(!checkJobsTitle || checkJobsTitle === null ) throw new Error("job title does not exist...");
+  if(!checkJobsTitle || checkJobsTitle === null) throw new Error("job title does not exist...");
 
-  const cacheEmployee = {
+  const cacheEmployee: IEmployee = {
     employeeId: employee.employeeId,
     firtsname: employee.firtsname,
     lastname: employee.lastname,
@@ -33,7 +33,7 @@ const insertEmployee = async (employee: IEmployee): Promise<object> => {
     salary: employee.salary,
     jobsTitle: checkJobsTitle?._id,
   }
-  const responseInsert: object = await employeeModel.create(cacheEmployee);
+  const responseInsert: IEmployee = await employeeModel.create(cacheEmployee);
   return responseInsert;
 };
 
@@ -43,17 +43,17 @@ const selectEmployees = async (): Promise<object> => {
 }
 
 const selectEmployee = async (id: string): Promise<object> => {
-  const response: any = await employeeModel.findOne({_id: id});
+  const response: any = await employeeModel.findOne({ _id: id });
   if(response === null) throw new Error("The id doesn't match with any id in our database...");
   return response;
 }
 
-const updateEmploye = async (id: string, employee: IEmployee): Promise<object> => {
+const renewEmploye = async (id: string, employee: IEmployee): Promise<object> => {
   inputChecker(employee);  
   const checkJobsTitle: any = await jobstitleModel.findOne({ jobsTitle: employee.jobsTitle });
-  if(!checkJobsTitle || checkJobsTitle === null ) throw new Error("job title does not exist...");
+  if(!checkJobsTitle || checkJobsTitle === null) throw new Error("job title does not exist...");
 
-  const cacheEmployee = {
+  const cacheEmployee: IEmployee = {
     employeeId: employee.employeeId,
     firtsname: employee.firtsname,
     lastname: employee.lastname,
@@ -66,9 +66,9 @@ const updateEmploye = async (id: string, employee: IEmployee): Promise<object> =
 }
 
 const dropEmployee = async (id: string): Promise<object> => {
-  const response: any = await employeeModel.deleteOne({_id: id});
+  const response: any = await employeeModel.deleteOne({ _id: id });
   return response;
 }
 
-export { insertEmployee, selectEmployees, selectEmployee, updateEmploye, dropEmployee }
+export { insertEmployee, selectEmployees, selectEmployee, renewEmploye, dropEmployee }
 

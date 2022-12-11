@@ -1,7 +1,7 @@
 import { Schema, Types, model, Model } from "mongoose";
-import { Jobstitle } from "../interfaces/jobstitle.interface";
+import { IJobstitle } from "../interfaces/jobstitle.interface";
 
-const jobstitleSchema = new Schema<Jobstitle>(
+const jobstitleSchema = new Schema<IJobstitle> (
   {
     jobsTitle: {
       type: String,
