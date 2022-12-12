@@ -4,15 +4,23 @@
     <img src="https://skillicons.dev/icons?i=git,ts,nodejs,express,mongodb,vscode" />
 </p>
 
-🌎 Deploy
+🌎 Deploy - by AWS under Ubuntu 20.04 LTS 
 
- - no deployed yet
+ - http://13.211.236.140/ 
+
+    <img src='https://img.shields.io/website?down_color=red&down_message=Out%20of%20service&label=API&up_message=Alive&url=http%3A%2F%2F13.211.236.140%2Femployee' />
 
 ⚒️ Installation
 
- - npm install - for run in local
-
-👇 Usage 
+ - npm install - for run in local 
+ - install mongodb
+ - create ".env" file in main folder
+ inside ".env" white this 👇
+````
+PORT=3000
+DB_LOCAL=mongodb://localhost:27017/users-api
+````
+▶️ Usage 
 
  - npm run dev - for run in local
 
