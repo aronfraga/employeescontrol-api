@@ -14,8 +14,8 @@
 
  - npm install - for run in local 
  - install mongodb
- - create ".env" file in main folder
- inside ".env" white this 👇
+ - create ".env" file in main folder.
+ - inside ".env" write this 👇
 ````
 PORT=3000
 DB_LOCAL=mongodb://localhost:27017/users-api
