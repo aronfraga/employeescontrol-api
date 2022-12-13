@@ -6,9 +6,9 @@
 
 🌎 Deploy - by AWS under Ubuntu 20.04 LTS 
 
- - http://13.211.236.140/ 
+ - http://54.66.55.136// 
 
-    <img src='https://img.shields.io/website?down_color=red&down_message=Out%20of%20service&label=API&up_message=Alive&url=http%3A%2F%2F13.211.236.140%2Femployee' />
+    <img src='https://img.shields.io/website?down_color=red&down_message=Out%20of%20service&label=API&up_message=Alive&url=http%3A%2F%2F54.66.55.136%2Femployee' />
 
 ⚒️ Installation
 
