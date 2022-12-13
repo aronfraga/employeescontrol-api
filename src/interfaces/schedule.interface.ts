@@ -1,5 +1,6 @@
 export interface ISchedule {
-  employeeID: string,
+  employeeId: string,
   entryTime: number,
-  closingHour: number
+  closingHour: number,
+  done: boolean,
 }

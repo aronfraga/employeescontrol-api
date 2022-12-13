@@ -1,11 +1,10 @@
 import { Router } from "express";
-import { setEndToWork, setStartToWork, showAllSchedule, showSpecificSchedule } from "../controllers/schedule";
+import { clockAction, showAllSchedule, showSpecificSchedule } from "../controllers/schedule";
 
 const router = Router();
 
 router.get("/", showAllSchedule);
 router.get("/", showSpecificSchedule);
-router.post("/", setStartToWork);
-router.post("/", setEndToWork);
+router.post("/", clockAction);
 
 export { router };

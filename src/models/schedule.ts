@@ -3,17 +3,21 @@ import { ISchedule } from "../interfaces/schedule.interface";
 
 const scheduleSchema = new Schema<ISchedule> (
   {
-    employeeID: [{
+    employeeId: [{
       type: Types.ObjectId,
       ref: 'employee',
     }],
     entryTime: {
       type: Number,
-      required: true      
+      required: false      
     },
     closingHour: {
       type: Number,
-      required: true      
+      required: false      
+    },
+    done: {
+      type: Boolean,
+      required: true
     }
   },
   {
