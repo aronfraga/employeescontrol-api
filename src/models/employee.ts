@@ -23,6 +23,18 @@ const employeeSchema = new Schema<IEmployee> (
       type: Number,
       required: true
     },
+    onTime: {
+      type: Number,
+      required: true
+    },
+    lateArrivals: {
+      type: Number,
+      required: true
+    },
+    score: {
+      type: Number,
+      required: true
+    },
     jobsTitle: [{
       type: Types.ObjectId,
       ref: 'jobstitle',

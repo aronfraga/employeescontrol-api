@@ -14,6 +14,14 @@ const jobstitleSchema = new Schema<IJobstitle> (
     maxSalary: {
       type: Number,
       required: true
+    },
+    startToWork:{
+      type: Number,
+      required: true
+    },
+    entToWork:{
+      type: Number,
+      required: true
     }
   },
   {

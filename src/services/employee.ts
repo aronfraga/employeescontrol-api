@@ -19,11 +19,15 @@ const inputChecker = (employee: IEmployee): void => {
 
 const insertEmployee = async (employee: IEmployee): Promise<IEmployee> => {
   inputChecker(employee);
-  const checkEmployee: any = await employeeModel.findOne({ employeeId: employee.employeeId }); 
+  const checkEmployee: IEmployee = await employeeModel.findOne({ employeeId: employee.employeeId }) as IEmployee; 
   if(!!checkEmployee) throw new Error("The employee is already in our system...");
   
   const checkJobsTitle: any = await jobstitleModel.findOne({ jobsTitle: employee.jobsTitle });
   if(!checkJobsTitle || checkJobsTitle === null) throw new Error("job title does not exist...");
+
+  if(employee.salary < checkJobsTitle.minSalary || employee.salary > checkJobsTitle.maxSalary) {
+    throw new Error(`The Salary range should be between ${checkJobsTitle.minSalary} and ${checkJobsTitle.maxSalary}`);
+  }
 
   const cacheEmployee: IEmployee = {
     employeeId: employee.employeeId,
@@ -31,6 +35,9 @@ const insertEmployee = async (employee: IEmployee): Promise<IEmployee> => {
     lastname: employee.lastname,
     phoneNumber: employee.phoneNumber,
     salary: employee.salary,
+    onTime: 0,
+    lateArrivals: 0,
+    score: 0,
     jobsTitle: checkJobsTitle?._id,
   }
   const responseInsert: IEmployee = await employeeModel.create(cacheEmployee);
@@ -48,17 +55,21 @@ const selectEmployee = async (id: string): Promise<object> => {
   return response;
 }
 
-const renewEmploye = async (id: string, employee: IEmployee): Promise<object> => {
+const renewEmploye = async (id: string, employee: IEmployee): Promise<IEmployee> => {
   inputChecker(employee);  
   const checkJobsTitle: any = await jobstitleModel.findOne({ jobsTitle: employee.jobsTitle });
   if(!checkJobsTitle || checkJobsTitle === null) throw new Error("job title does not exist...");
 
+  const saveScore: IEmployee = await employeeModel.findOne({ _id: id }) as IEmployee;
   const cacheEmployee: IEmployee = {
     employeeId: employee.employeeId,
     firtsname: employee.firtsname,
     lastname: employee.lastname,
     phoneNumber: employee.phoneNumber,
     salary: employee.salary,
+    onTime: saveScore.onTime,
+    lateArrivals: saveScore.lateArrivals,
+    score: saveScore.score,
     jobsTitle: checkJobsTitle?._id,
   }
   const response: any = await employeeModel.findOneAndUpdate({ _id: id }, cacheEmployee, { new: true });
