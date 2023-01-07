@@ -1,8 +1,9 @@
 import { Router } from "express";
-import { getEmployee, getEmployees, postEmployee, updateEmployee, deleteEmployee } from "../controllers/employee";
+import { welcome, getEmployee, getEmployees, postEmployee, updateEmployee, deleteEmployee } from "../controllers/employee";
 
 const router = Router();
 
+router.get("/welcome", welcome);
 router.get("/:id", getEmployee);
 router.get("/", getEmployees);
 router.post("/", postEmployee);

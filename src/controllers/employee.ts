@@ -3,6 +3,17 @@ import { insertEmployee, selectEmployee, selectEmployees, renewEmploye, dropEmpl
 import { succesfulHandler } from "../utils/succesfulHandler";
 import { unsuccesfulHandler } from "../utils/unsuccesfulHandler";
 
+const welcome = async ({ params }: Request, res: Response): Promise<void> => {
+  try { 
+    const response: object = {
+      Message: "Hello this is API About Control Employees, to see the documentation go to link -> https://github.com/aronfraga/employeescontrol-api/blob/main/README.md"
+    };
+    succesfulHandler(res, response);
+  } catch (error: unknown) {
+    unsuccesfulHandler(res, error);
+  }
+}
+
 const getEmployee = async ({ params }: Request, res: Response): Promise<void> => {
   try { 
     const response: object = await selectEmployee(params.id);
@@ -47,4 +58,4 @@ const deleteEmployee = async ({ params }: Request, res: Response): Promise<void>
   }
 }
 
-export { getEmployee, getEmployees, postEmployee, updateEmployee, deleteEmployee };
+export { welcome, getEmployee, getEmployees, postEmployee, updateEmployee, deleteEmployee };
